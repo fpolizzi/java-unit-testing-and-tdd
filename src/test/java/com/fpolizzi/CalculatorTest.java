@@ -3,21 +3,26 @@ package com.fpolizzi;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by fpolizzi on 08.04.26
  */
 class CalculatorTest {
 
+    private final Calculator underTest = new Calculator();
+
     @Test
     void canAddNumbers() {
 
-        var calculator = new Calculator();
+        // given
+        var number1 = 3;
+        var number2 = 3;
 
-        var result = calculator.add(3, 3);
+        // when
+        var actual = underTest.add(number1, number2);
 
-        // assertEquals(6, result);
-        assertThat(result).isEqualTo(6);
+        // then
+        var expected = 6;
+        assertThat(actual).isEqualTo(expected);
     }
 }
