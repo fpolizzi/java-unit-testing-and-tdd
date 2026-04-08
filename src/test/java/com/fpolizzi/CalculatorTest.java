@@ -2,6 +2,7 @@ package com.fpolizzi;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -16,6 +17,7 @@ class CalculatorTest {
 
         var result = calculator.add(3, 3);
 
-        assertEquals(6, result);
+        // assertEquals(6, result);
+        assertThat(result).isEqualTo(6);
     }
 }
