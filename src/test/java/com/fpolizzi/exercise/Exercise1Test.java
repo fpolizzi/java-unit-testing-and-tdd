@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -74,9 +76,44 @@ class Exercise1Test {
 
     @Test
     void itShouldCalculateAverage() {
+
         // Given
+        var scores = List.of(1, 2, 3 ,4, 5);
+
         // When
+        double actual = underTest.calculateAverage(scores);
+
         // Then
+        double expected = 3;
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void itShouldCalculateAverageWhenNull() {
+
+        // Given
+        List<Integer> scores = null;
+
+        // When
+        double actual = underTest.calculateAverage(scores);
+
+        // Then
+        double expected = 0.0;
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void itShouldCalculateAverageWhenEmptyList() {
+
+        // Given
+        List<Integer> scores = List.of();
+
+        // When
+        double actual = underTest.calculateAverage(scores);
+
+        // Then
+        double expected = 0.0;
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
