@@ -42,7 +42,7 @@ public class Exercise1 {
         return scores.stream().mapToInt(Integer::intValue).average().orElse(0.0);
     }
 
-    // 5. Generate username from full name
+    // 5. Generate username from the full name
     public String generateUsername(String fullName) {
         if (fullName == null || !fullName.contains(" ")) return "";
         String[] parts = fullName.trim().split("\\s+");
@@ -53,7 +53,7 @@ public class Exercise1 {
     public List<Student> getTopStudents(List<Student> students, int threshold) {
         if (students == null) return List.of();
         return students.stream()
-                .filter(s -> s.score() <= threshold)
+                .filter(s -> s.score() >= threshold)
                 .sorted((a, b) -> Integer.compare(b.score(), a.score()))
                 .toList();
     }
@@ -76,7 +76,7 @@ public class Exercise1 {
         return copy;
     }
 
-    // 9. Check if student passed
+    // 9. Check if a student passed
     public boolean hasPassed(int score) {
         return score >= 50;
     }

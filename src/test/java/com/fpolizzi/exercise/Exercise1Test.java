@@ -125,9 +125,68 @@ class Exercise1Test {
 
     @Test
     void itShouldGetTopStudents() {
+
         // Given
+        var students = List.of(
+                new Student("Alex", 10),
+                new Student("Jamila", 80),
+                new Student("Ana", 7),
+                new Student("George", 18),
+                new Student("Sally", 54)
+        );
+
+        var threshold = 50;
+
         // When
+        var actual = underTest.getTopStudents(students, threshold);
+
         // Then
+        var expected = List.of(
+                new Student("Jamila", 80),
+                new Student("Sally", 54)
+        );
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void itShouldGetTopStudentsWhenOneHasNegativeScore() {
+
+        // Given
+        var students = List.of(
+                new Student("Alex", 10),
+                new Student("Jamila", 80),
+                new Student("Ana", 7),
+                new Student("George", 18),
+                new Student("Sally", 54)
+        );
+
+        var threshold = 50;
+
+        // When
+        var actual = underTest.getTopStudents(students, threshold);
+
+        // Then
+        var expected = List.of(
+                new Student("Jamila", 80),
+                new Student("Sally", 54)
+        );
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void itShouldReturnEmptyListWhenStudentsAreNull() {
+
+        // Given
+        List<Student> students = null;
+
+        var threshold = 50;
+
+        // When
+        var actual = underTest.getTopStudents(students, threshold);
+
+        // Then
+        var expected = List.of();
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
