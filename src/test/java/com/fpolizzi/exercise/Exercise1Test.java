@@ -60,11 +60,31 @@ class Exercise1Test {
 
     }
 
-    @Test
-    void itShouldCountVowels() {
-        // Given
+    @ParameterizedTest
+    @CsvSource({
+            "Alex, 2",
+            "Jamila, 3",
+            "Ana, 2",
+            "George, 3",
+            "Sally, 1"
+    })
+    void countVowelsWhenValidName(String name, int expectedtVowels) {
+
         // When
+        var actual = underTest.countVowels(name);
+
         // Then
+        assertThat(actual).isEqualTo(expectedtVowels);
+    }
+
+    @Test
+    void countVowelsWhenNull() {
+
+        // When
+        var actual = underTest.countVowels(null);
+
+        // Then
+        assertThat(actual).isZero();
     }
 
     @Test
