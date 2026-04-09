@@ -5,7 +5,9 @@ package com.fpolizzi.exercise;
  */
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Exercise1 {
 
@@ -62,10 +64,10 @@ public class Exercise1 {
     public boolean hasDuplicateNames(List<Student> students) {
         if (students == null || students.isEmpty()) return false;
 
+        Set<String> seen = new HashSet<>();
         return students.stream()
                 .map(s -> s.name().toLowerCase())
-                .distinct()
-                .count() < students.size();
+                .anyMatch(name -> !seen.add(name));
     }
 
     // 8. Reverse course list

@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 /**
  * Created by fpolizzi on 09.04.26
  */
-class Exercise1Test {
+public class Exercise1Test {
 
     private final Exercise1 underTest = new Exercise1();
 
@@ -97,9 +97,21 @@ class Exercise1Test {
     })
     void isValidStudentId(String id, boolean expected) {
 
+        // When
         var actual = underTest.isValidStudentId(id);
 
+        // Then
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void itShouldTestIfStudentIdIsNull() {
+
+        // When
+        var actual = underTest.isValidStudentId(null);
+
+        // Then
+        assertThat(actual).isFalse();
     }
 
     @Test
@@ -146,9 +158,33 @@ class Exercise1Test {
 
     @Test
     void itShouldGenerateUsername() {
-        // Given
+
         // When
+        var actual = underTest.generateUsername("Alex Smith");
+
         // Then
+        String expected = "asmith";
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void itShouldTestInvalidInput() {
+
+        // When
+        var actual = underTest.generateUsername("Alex");
+
+        // Then
+        assertThat(actual).isEmpty();
+    }
+
+    @Test
+    void itShouldReturnIsEmptyIfUsernameIsNull() {
+
+        // When
+        var actual = underTest.generateUsername(null);
+
+        // Then
+        assertThat(actual).isEmpty();
     }
 
     @Test
@@ -219,10 +255,76 @@ class Exercise1Test {
     }
 
     @Test
-    void itShouldHasDuplicateNames() {
+    void itShouldReturnEmptyListWhenStudentsAreEmpty() {
+
         // Given
+        List<Student> students = List.of();
+
+        var threshold = 50;
+
         // When
+        var actual = underTest.getTopStudents(students, threshold);
+
         // Then
+        var expected = List.of();
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void itShoulfFindDuplicateNamesIfExists() {
+
+        // Given
+        var students = List.of(
+                new Student("Alex", 10),
+                new Student("alex", 20)
+        );
+
+        // When
+        var actual = underTest.hasDuplicateNames(students);
+
+        // Then
+        assertThat(actual).isTrue();
+    }
+
+    @Test
+    void isShouldCheckIfThereAreOnlyUniqueNames() {
+
+        // Given
+        var students = List.of(
+                new Student("Alex", 10),
+                new Student("Jamila", 20)
+        );
+
+        // When
+        var actual = underTest.hasDuplicateNames(students);
+
+        assertThat(actual).isFalse();
+    }
+
+    @Test
+    void itShouldReturnFalseForDuplicatesWhenStudentsIsNull() {
+
+        // Given
+        List<Student> students = null;
+
+        // When
+        var actual = underTest.hasDuplicateNames(students);
+
+        // Then
+        assertThat(actual).isFalse();
+    }
+
+    @Test
+    void itShouldReturnFalseForDuplicatesWhenStudentsIsEmpty() {
+
+        // Given
+        List<Student> students = List.of();
+
+        // When
+        var actual = underTest.hasDuplicateNames(students);
+
+        // Then
+        assertThat(actual).isFalse();
     }
 
     @Test
