@@ -3,6 +3,9 @@ package com.fpolizzi.exercise;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import java.util.List;
 
@@ -301,11 +304,9 @@ class Exercise1Test {
         assertThat(actual).isFalse();
     }
 
-    @Test
-    void itShouldReturnFalseForDuplicatesWhenStudentsIsNull() {
-
-        // Given
-        List<Student> students = null;
+    @ParameterizedTest
+    @MethodSource("nullOrEmptyStudents")
+    void itShouldReturnFalseForDuplicatesWhenStudentsIsNullOrEmpty(List<Student> students) {
 
         // When
         var actual = underTest.hasDuplicateNames(students);
@@ -314,17 +315,8 @@ class Exercise1Test {
         assertThat(actual).isFalse();
     }
 
-    @Test
-    void itShouldReturnFalseForDuplicatesWhenStudentsIsEmpty() {
-
-        // Given
-        List<Student> students = List.of();
-
-        // When
-        var actual = underTest.hasDuplicateNames(students);
-
-        // Then
-        assertThat(actual).isFalse();
+    static Stream<List<Student>> nullOrEmptyStudents() {
+        return Stream.of(null, List.of());
     }
 
     @Test
