@@ -1,6 +1,8 @@
 package com.fpolizzi;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,16 +13,20 @@ class EmailValidatorTest {
 
     private EmailValidator underTest = new EmailValidator();
 
-    @Test
-    void canValidateCorrectEmail() {
-
-        // Given
-        var email = "hello@amigoscode.com";
+    @ParameterizedTest
+    @CsvSource({
+            "hello@amigoscode.com, true",
+            "helloamigoscode.com, false",
+            "hello@amigoscode.org, true",
+            "hello+foo@amigoscode.com, true",
+            "'', false"
+    })
+    void canValidateCorrectEmail(String email, boolean expected) {
 
         // When
         var actual = underTest.test(email);
 
         // Then
-        assertThat(actual).isTrue();
+        assertThat(actual).isEqualTo(expected);
     }
 }
