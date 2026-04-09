@@ -68,7 +68,7 @@ class Exercise1Test {
             "George, 3",
             "Sally, 1"
     })
-    void countVowelsWhenValidName(String name, int expectedtVowels) {
+    void itShouldCountVowelsWhenValidName(String name, int expectedtVowels) {
 
         // When
         var actual = underTest.countVowels(name);
@@ -78,7 +78,7 @@ class Exercise1Test {
     }
 
     @Test
-    void countVowelsWhenNull() {
+    void itShouldCountVowelsWhenNull() {
 
         // When
         var actual = underTest.countVowels(null);
@@ -271,7 +271,7 @@ class Exercise1Test {
     }
 
     @Test
-    void itShoulfFindDuplicateNamesIfExists() {
+    void itShouldfFindDuplicateNamesIfExists() {
 
         // Given
         var students = List.of(
@@ -287,7 +287,7 @@ class Exercise1Test {
     }
 
     @Test
-    void isShouldCheckIfThereAreOnlyUniqueNames() {
+    void itShouldCheckIfThereAreOnlyUniqueNames() {
 
         // Given
         var students = List.of(
