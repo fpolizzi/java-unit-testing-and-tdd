@@ -1,5 +1,6 @@
 package com.fpolizzi;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +15,14 @@ class CalculatorTest {
 
     @BeforeEach
     void setUp() {
-        System.out.println("Hello");
+        System.out.println("setup");
 
         underTest = new Calculator();
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println("tear down");
     }
 
     @Test
