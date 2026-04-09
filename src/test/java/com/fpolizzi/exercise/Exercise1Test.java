@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 /**
  * Created by fpolizzi on 09.04.26
  */
-public class Exercise1Test {
+class Exercise1Test {
 
     private final Exercise1 underTest = new Exercise1();
 
