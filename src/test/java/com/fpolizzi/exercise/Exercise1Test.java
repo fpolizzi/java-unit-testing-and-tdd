@@ -87,11 +87,19 @@ class Exercise1Test {
         assertThat(actual).isZero();
     }
 
-    @Test
-    void itShouldIsValidStudentId() {
-        // Given
-        // When
-        // Then
+    @ParameterizedTest
+    @CsvSource({
+            "S1234, true",
+            "S001, false",
+            "T1234, false",
+            "S123, false",
+            "'', false"
+    })
+    void isValidStudentId(String id, boolean expected) {
+
+        var actual = underTest.isValidStudentId(id);
+
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -177,7 +185,8 @@ class Exercise1Test {
                 new Student("Jamila", 80),
                 new Student("Ana", 7),
                 new Student("George", 18),
-                new Student("Sally", 54)
+                new Student("Sally", 54),
+                new Student("Brian", 7)
         );
 
         var threshold = 50;
