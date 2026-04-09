@@ -366,9 +366,22 @@ class Exercise1Test {
     }
 
     @Test
-    void itShouldAssignBadge() {
-        // Given
+    void itShouldAssignBadgeWhenNotHelpful() {
+
         // When
+        var actual = underTest.assignBadge(false);
+
         // Then
+        assertThat(actual).isEqualTo("Needs Improvement");
+    }
+
+    @Test
+    void itShouldAssignBadgeWhenHelpful() {
+
+        // When
+        var actual = underTest.assignBadge(true);
+
+        // Then
+        assertThat(actual).isEqualTo("Star Student");
     }
 }
