@@ -328,17 +328,41 @@ class Exercise1Test {
     }
 
     @Test
-    void itShouldReverseCourses() {
+    void itShouldReverseCoursesCorrectly() {
+
         // Given
+        var courses = List.of("Math", "Arts", "Chemistry");
+
         // When
+        var actual = underTest.reverseCourses(courses);
+
         // Then
+        assertThat(actual).containsExactly("Chemistry", "Arts", "Math");
     }
 
     @Test
-    void itShouldHasPassed() {
-        // Given
+    void itShouldReverseCoursesWhenNull() {
+
         // When
+        var actual = underTest.reverseCourses(null);
+
         // Then
+        assertThat(actual).isEmpty();
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "50, true",
+            "49, false",
+            "100, true"
+    })
+    void itShouldHasPassedCorrectly(int score, boolean expected) {
+
+        // When
+        var actual = underTest.hasPassed(score);
+
+        // Then
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
