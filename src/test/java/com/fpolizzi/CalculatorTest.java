@@ -1,5 +1,6 @@
 package com.fpolizzi;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,10 +10,19 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class CalculatorTest {
 
-    private final Calculator underTest = new Calculator();
+    private Calculator underTest;
+
+    @BeforeEach
+    void setUp() {
+        System.out.println("Hello");
+
+        underTest = new Calculator();
+    }
 
     @Test
     void canAddNumbers() {
+
+        System.out.println("canAddNumbers");
 
         // given
         var number1 = 3;
@@ -24,5 +34,11 @@ class CalculatorTest {
         // then
         var expected = 6;
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void name() {
+
+        System.out.println("name");
     }
 }
