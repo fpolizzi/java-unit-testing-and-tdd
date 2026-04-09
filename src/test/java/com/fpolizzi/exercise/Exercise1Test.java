@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Created by fpolizzi on 09.04.26
@@ -40,6 +41,21 @@ class Exercise1Test {
 
         // Then
         assertThat(actual).isEqualTo(expectedGrade);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "-100",
+            "-1",
+            "101",
+            "150"
+    })
+    void itShouldThrowWhenInvalidGrade(int grade) {
+
+        assertThatThrownBy(() -> underTest.getGrade(grade))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Score must be between 0 and 100");
+
     }
 
     @Test
