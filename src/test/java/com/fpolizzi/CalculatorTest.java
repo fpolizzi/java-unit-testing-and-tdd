@@ -1,8 +1,6 @@
 package com.fpolizzi;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,6 +21,16 @@ class CalculatorTest {
     @AfterEach
     void tearDown() {
         System.out.println("tear down");
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("before class create");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("after class destroy");
     }
 
     @Test
