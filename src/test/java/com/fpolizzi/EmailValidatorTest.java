@@ -1,6 +1,7 @@
 package com.fpolizzi;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -11,8 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class EmailValidatorTest {
 
-    private EmailValidator underTest = new EmailValidator();
+    private final EmailValidator underTest = new EmailValidator();
 
+    @EnabledOnOs(OS.LINUX)
     @ParameterizedTest
     @CsvSource({
             "hello@amigoscode.com, true",
