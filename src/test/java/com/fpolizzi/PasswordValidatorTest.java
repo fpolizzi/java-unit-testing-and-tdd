@@ -24,4 +24,17 @@ class PasswordValidatorTest {
         // Then
         assertThat(actual).isFalse();
     }
+
+    @Test
+    void willFailIfPasswordIsEmpty() {
+
+        // Given
+        String password = "";
+
+        // When
+        var actual = underTest.test(password);
+
+        // Then
+        assertThat(actual).isFalse();
+    }
 }
