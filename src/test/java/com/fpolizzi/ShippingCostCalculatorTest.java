@@ -22,4 +22,9 @@ class ShippingCostCalculatorTest {
                 false)).isEqualTo(10.00);
     }
 
+    @Test
+    void shouldChargeTwentyEurosForInternationalShipping() {
+        assertThat(underTest.calculate(2.0, "International",
+                false)).isEqualTo(20.00);
+    }
 }
