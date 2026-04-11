@@ -10,4 +10,9 @@ class ShippingCostCalculatorTest {
 
     private final ShippingCostCalculator underTest = new ShippingCostCalculator();
 
+    @Test
+    void shouldChargeFiveEurosForSmallPackage() {
+        assertThat(underTest.calculate(0.5, "Local", false)).isEqualTo(5.00);
+    }
+
 }
