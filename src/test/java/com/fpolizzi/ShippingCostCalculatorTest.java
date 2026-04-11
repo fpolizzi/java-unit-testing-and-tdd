@@ -27,4 +27,10 @@ class ShippingCostCalculatorTest {
         assertThat(underTest.calculate(2.0, "International",
                 false)).isEqualTo(20.00);
     }
+
+    @Test
+    void shouldAddExpressFee() {
+        assertThat(underTest.calculate(0.5, "Local",
+                true)).isEqualTo(20.00);
+    }
 }
