@@ -7,6 +7,12 @@ public class ShippingCostCalculator {
 
     public double calculate(double weightKg, String region, boolean express) {
         // TODO: implement using TDD
-        return 0.0;
+        double base = 0;
+
+        if (weightKg <= 1.0 ) {
+            base = 5.00;
+        }
+
+        return base;
     }
 }
