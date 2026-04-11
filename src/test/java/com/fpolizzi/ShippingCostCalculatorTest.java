@@ -12,7 +12,14 @@ class ShippingCostCalculatorTest {
 
     @Test
     void shouldChargeFiveEurosForSmallPackage() {
-        assertThat(underTest.calculate(0.5, "Local", false)).isEqualTo(5.00);
+        assertThat(underTest.calculate(0.5, "Local",
+                false)).isEqualTo(5.00);
+    }
+
+    @Test
+    void shouldChargeTenEurosForLocalStandardShipping() {
+        assertThat(underTest.calculate(2.0, "Local",
+                false)).isEqualTo(10.00);
     }
 
 }
