@@ -11,8 +11,8 @@ public class ShippingCostCalculator {
 
         if (weightKg <= 1.0 ) {
             base = 5.00;
-        } else if ((weightKg <= 5) && region.equalsIgnoreCase("Local")) {
-            base = 10.00;
+        } else if (weightKg <= 5) {
+            base = region.equalsIgnoreCase("Local") ? 10.00 : 20.00;
         }
 
         return base;
