@@ -6,7 +6,7 @@ package com.fpolizzi;
 public class ShippingCostCalculator {
 
     public double calculate(double weightKg, String region, boolean express) {
-        // TODO: implement using TDD
+        // DONE: implement using TDD
         double base;
 
         if (weightKg <= 1.0 ) {
